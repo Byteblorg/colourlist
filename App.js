@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { StyleSheet, View, FlatList, Text, Pressable, Button } from "react-native";
+import React, { useState,useEffect  } from "react";
+import { StyleSheet, View, FlatList, Text, Pressable,Button} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import BlockRGB from "./BlockRGB";
+import BlockRGB from "./screens/BlockRGB";
+import DetailsScreen from "./screens/DetailsScreen";
 
 function HomeScreen() {
   const [colorArray, setColorArray] = useState([
    
   ]);
+
+ 
 
 
  // generate random RGB color
@@ -45,7 +48,7 @@ const addRandomColor = () => {
           ]}
           onPress={addRandomColor}
         >
-          <Text style={styles.buttonText}>Add Random Color</Text>
+           <Text style={styles.buttonText}>Add Random Color</Text>
         </Pressable>
         <Pressable
           style={({ pressed }) => [
@@ -55,7 +58,7 @@ const addRandomColor = () => {
           ]}
           onPress={resetColors}
         >
-          <Text style={styles.buttonText}>Burn it</Text>
+          <Text style={styles.buttonText}>Reset</Text>
         </Pressable>
     </View>
 
@@ -76,8 +79,9 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Colour List" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
