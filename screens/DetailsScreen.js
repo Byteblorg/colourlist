@@ -4,6 +4,10 @@ import { View, Text, Pressable } from "react-native";
 export default function DetailsScreen({ route, navigation }) {
   const { red, green, blue } = route.params;
 
+ const brightness = (red * 299 + green * 587 + blue * 114) / 1000;
+
+ const textColor = brightness > 128 ? "black" : "white";
+
   return (
     <View
       style={{
@@ -20,12 +24,10 @@ export default function DetailsScreen({ route, navigation }) {
           width: "80%",
         }}
       >
-        {/* <Text style={{ color: "white", fontSize: 18 }}>
-          RGB: ({red}, {green}, {blue})
-        </Text> */}
-        <Text style={{ color: "white",fontSize: 20, padding: 10 }}>Red: {red}</Text>
-<Text style={{ color: "white",fontSize: 20, padding: 10 }}>Green: {green}</Text>
-<Text style={{ color: "white",fontSize: 20, padding: 10 }}>Blue: {blue}</Text>
+   
+        <Text style={{ color: textColor,fontSize: 20, padding: 10 }}>Red: {red}</Text>
+<Text style={{ color: textColor,fontSize: 20, padding: 10 }}>Green: {green}</Text>
+<Text style={{ color: textColor,fontSize: 20, padding: 10 }}>Blue: {blue}</Text>
 
    
       </View>

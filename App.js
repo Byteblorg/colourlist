@@ -1,18 +1,23 @@
-import React, { useState,useEffect  } from "react";
+import React, { useState,useEffect } from "react";
 import { StyleSheet, View, FlatList, Text, Pressable,Button} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import BlockRGB from "./screens/BlockRGB";
 import DetailsScreen from "./screens/DetailsScreen";
 
-function HomeScreen() {
+function HomeScreen(navigation) {
   const [colorArray, setColorArray] = useState([
    
   ]);
 
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  }, []); // <- add empty brackets here
  
-
-
  // generate random RGB color
  const randomColor = () => {
   const randomValue = () => Math.floor(Math.random() * 255);
