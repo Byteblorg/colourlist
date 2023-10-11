@@ -5,18 +5,20 @@ import { NavigationContainer } from "@react-navigation/native";
 import BlockRGB from "./screens/BlockRGB";
 import DetailsScreen from "./screens/DetailsScreen";
 
-function HomeScreen(navigation) {
+function HomeScreen() {
+
+  // useEffect(() => {
+  //   navigation.setOptions({
+  //     headerRight: () => <Button onPress={addRandomColor} title="Add color" />,
+  //   },[]);
+  // });
+
+
   const [colorArray, setColorArray] = useState([
    
   ]);
 
-  const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-  }, []); // <- add empty brackets here
  
  // generate random RGB color
  const randomColor = () => {
