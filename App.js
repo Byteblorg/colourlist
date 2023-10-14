@@ -7,18 +7,17 @@ import DetailsScreen from "./screens/DetailsScreen";
 
 function HomeScreen() {
 
-  // useEffect(() => {
-  //   navigation.setOptions({
-  //     headerRight: () => <Button onPress={addRandomColor} title="Add color" />,
-  //   },[]);
-  // });
-
-
   const [colorArray, setColorArray] = useState([
    
   ]);
 
-
+  const renderFlatList = (numColumns) => (
+    <FlatList
+      data={colorArray}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      numColumns={numColumns}
+    />);
  
  // generate random RGB color
  const randomColor = () => {
@@ -46,10 +45,11 @@ const addRandomColor = () => {
 
   return (
     <View style={styles.container}>
+
     <View style={styles.buttonContainer}>
+      
     <Pressable
           style={({ pressed }) => [
-            styles.button,
             styles.button1,
             pressed && styles.buttonPressed,
           ]}
@@ -57,9 +57,9 @@ const addRandomColor = () => {
         >
            <Text style={styles.buttonText}>Add Random Color</Text>
         </Pressable>
+
         <Pressable
           style={({ pressed }) => [
-            styles.button,
             styles.button2,
             pressed && styles.buttonPressed,
           ]}
@@ -69,12 +69,13 @@ const addRandomColor = () => {
         </Pressable>
     </View>
 
-    <FlatList
-      style={{ width: "100%" }}
-      data={colorArray}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.id}
-    />
+    <View style={styles.container}>
+
+    {renderFlatList(5)}
+
+</View>
+  
+
   </View>
   );
 
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     padding: 10,
-    width: "20%"
+    width: "50%"
 
   },
   button: {
@@ -109,15 +110,29 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     justifyContent: "center",
+    color: "#fff",
+
   },
   button1: {
     backgroundColor: "#007AFF",
+    color: "#000",
+    borderRadius: 5,
+    padding: 10,
+    alignItems: "center",
+
   },
   button2: {
     backgroundColor: "#FF3B30",
+    color: "#000",
+    borderRadius: 5,
+    padding: 10,
+    alignItems: "center",
+
   },
   buttonPressed: {
     opacity: 0.7,
+    color: "#000",
+
   },
   buttonText: {
     color: "#fff",

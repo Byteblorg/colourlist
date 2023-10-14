@@ -18,7 +18,7 @@ export default function BlockRGB(props) {
       style={{
         backgroundColor: `rgb(${props.red}, ${props.green}, ${props.blue})`,
         padding: 30,
-        width: "100%",
+        width: "20%",
       }}
       onPress={showDetails}
     >
